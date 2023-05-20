@@ -10,8 +10,7 @@ pipeline {
     
         stage ("terraform init") {
             steps {
-                sh ("terraform init -reconfigure")
-                echo "yes"
+                sh ("terraform init -reconfigure" --> ${yes})
             }
         }
         
