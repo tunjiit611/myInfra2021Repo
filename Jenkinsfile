@@ -13,25 +13,6 @@ pipeline {
                 sh ("terraform init -reconfigure") 
             }
         }
-        stage('Copy state to new backend') {
-            steps {
-            script {
-            def userInput = input(
-                id: 'copyState',
-                message: 'Do you want to copy existing state to the new backend?',
-                parameters: [
-                    [$class: 'ChoiceParameterDefinition', choices: 'yes\no', description: 'Choose yes or no']
-                ]
-            )
-
-            if (userInput == 'yes') {
-                // Code to copy the state to the new backend
-            } else {
-                // Code to start with an empty state
-            }
-        }
-    }
-}
         
         stage ("plan") {
             steps {
